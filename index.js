@@ -46,7 +46,8 @@ function checkGuess() {
     guessInput.disabled = true;
   }
 
-  if (guess !== targetNumber) {
+  const remainingAttempts = maxNumberOfAttempts - attempts;
+  if (guess !== targetNumber && remainingAttempts > 0) {
     if (guess < targetNumber) {
         tooLowMessage.style.display = ''; // Show the "too low" message
         tooLowMessage.textContent = 'You guessed too low. Try again.';
@@ -57,7 +58,6 @@ function checkGuess() {
         tooLowMessage.style.display = 'none'; // Hide the "too low" message
     }
 }
-const remainingAttempts = maxNumberOfAttempts - attempts;
 if (attempts < maxNumberOfAttempts && guess !== targetNumber) {
     numberOfGuessesMessage.style.display = '';
     numberOfGuessesMessage.innerHTML = `You guessed ${guess}. <br> ${remainingAttempts} guesses remaining`;
